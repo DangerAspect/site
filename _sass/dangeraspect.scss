@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+/* ibm-plex-mono-regular - latin */
+@font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('IBM Plex Mono'), local('IBMPlexMono'),
+         url('/assets/fonts/ibm-plex-mono-v4-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('/assets/fonts/ibm-plex-mono-v4-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+
+  /* oswald-200 - latin */
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 200;
+    src: local('Oswald ExtraLight'), local('Oswald-ExtraLight'),
+         url('/assets/fonts/oswald-v17-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('/assets/fonts/oswald-v17-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+$background-color: #10161c;
+$foreground-color: #ccc;
+$primary-font: 'IBM Plex Mono', Consolas, 'Courier New', Courier, monospace;
+$logo-font: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+    font-family: $primary-font;
+    background-color: $background-color;
+    color: $foreground-color;
+    line-height: 1.25;
+    font-family: $primary-font;
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+a{
+    color: $foreground-color;
+    border-bottom: 1px solid currentColor;
+    text-decoration: none;
+    &:hover, &:focus{
+        color: $background-color;
+        background-color: $foreground-color;
+    }
+}
+em{
+    color: #fff;
+    //background-color: $foreground-color;
+    font-style: normal;
+}
+strong{
+    color: $background-color;
+    background-color: $foreground-color;
+    font-weight: normal;
+}
+h1, h2{
+    font-size: 1rem;
+    font-weight: normal;
+}
+h2{
+    text-indent: 0;
+    margin-top: 1.25rem;
+    text-transform: uppercase;
+}
+p{
+    margin-bottom: 1.25rem;
+    text-indent: 5ch;
+}
+ul{
+    padding: 0;
+    margin-left: 5ch;
+    margin-bottom: 1.25rem;
+    li{
+        list-style: none;
+    }
+    ul{
+        opacity: 0.75;
+    }
+}
+
+
+.terminal{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    header{
+        display: flex;
+        flex-direction: row;
+        .header-left{
+            flex: auto;
+            text-align: left;
+        }
+        .header-center{
+            flex: auto;
+            text-align: center;
+        }
+        .header-right{
+            flex: auto;
+            text-align: right;
+
+        }
+    }
+    .content{
+        flex: auto;
+    }
+    footer{
+        display: flex;
+        .footer-left{
+            display: inline;
+            background-color: $foreground-color;
+            color: $background-color;
+            flex: none;
+        }
+        .cursor{
+            width: 1ch;
+            border-bottom: 4px solid currentColor;
+            flex: none;
+            animation: 1s blink infinite;
+        }
+    }
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+    49%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
