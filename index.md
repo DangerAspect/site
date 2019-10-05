@@ -25,6 +25,8 @@ Fan-run reference sites about games
 
 You can find me online on these platforms:
 
+* Personal website
+    * [joeyfoo.com](https://joeyfoo.com/)
 * Discord
     * Username: DangerAspect#0001
 * Twitter
