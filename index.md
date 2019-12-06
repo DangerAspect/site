@@ -15,11 +15,14 @@ Software developer, admin on [the N3FS](http://n3fs.co.uk/), moderator on [the R
 
 ## DangerAspect Sites
 
-Fan-run reference sites about games
+Websites under the dangeraspect.xyz domain name:
 
 * *DangerAspect/Siege*
     * [siege.dangeraspect.xyz](https://siege.dangeraspect.xyz/)
     * A fan-run site featuring various guides and tools for Rainbow Six: Siege. 
+* *Operation Concrete Jungle*
+    * [concretejungle.dangeraspect.xyz](https://concretejungle.dangeraspect.xyz/)
+    * A fan-made Rainbow Six Siege operation, led by @hanjosi and based in Thailand!
 
 ## Profiles
 
