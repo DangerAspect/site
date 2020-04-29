@@ -15,4 +15,6 @@ links:
     -   title: Operation Concrete Jungle
         link: "https://concretejungle.dangeraspect.xyz/"
         description: "A fan-made Rainbow Six Siege operation."
+
+background-image: /assets/img/background.jpg
 ---
