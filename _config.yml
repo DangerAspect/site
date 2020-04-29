@@ -1,0 +1,14 @@
+remote_theme: joeyfoo/slate
+
+title: "DangerAspect"
+description: "DangerAspect is Joey’s online handle for hobby and gaming-related stuff."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://siege.dangeraspect.xyz/" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: dangeraspect
+github_username:  dangeraspect
+
+header_pages:
+  - index.md
+  - about.md
+
+permalink: pretty

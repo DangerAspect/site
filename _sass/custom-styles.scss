@@ -1,0 +1,31 @@
+// Override home page width
+main article.home .home-content .link-collection{
+    max-width: none; 
+}
+
+// Logo
+header{
+    vertical-align: middle;
+    .site-title{
+        display: flex;
+        flex-direction: row;
+        img{
+            display: block;
+            height: 2rem;
+        }
+        div{
+            font-weight: lighter;
+            margin-left: 0.5ch;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.25ch;
+        }
+    }
+}
+
+main article.home h1{
+    font-weight: lighter;
+    strong{
+        font-weight: bold;
+    }
+}
