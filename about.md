@@ -21,43 +21,43 @@ Oh, and I [cosplay](https://github.com/joeyfoo/cosplay-notes) too.
 You can find me online on these platforms:
 
 <ul class="link-collection">
-    <li>
+    <li class="link">
         <a href="https://joeyfoo.com/">
             <div class="link-title">Personal website</div>
             <div class="link-description">joeyfoo.com</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a>
             <div class="link-title">Discord</div>
             <div class="link-description">DangerAspect#0001</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a href="https://twitter.com/joeyfjj">
             <div class="link-title">Twitter</div>
             <div class="link-description">@joeyfjj</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a href="https://github.com/joeyfoo">
             <div class="link-title">GitHub</div>
             <div class="link-description">joeyfoo</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a href="https://steamcommunity.com/id/DangerAspect/">
             <div class="link-title">Steam</div>
             <div class="link-description">DangerAspect</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a>
             <div class="link-title">Uplay</div>
             <div class="link-description">DangerAspect</div>
         </a>
     </li>
-    <li>
+    <li class="link">
         <a href="https://www.youtube.com/channel/UCJXRrmE82RZ9WoUScgp7STA)">
             <div class="link-title">YouTube</div>
             <div class="link-description">DangerAspect</div>

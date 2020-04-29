@@ -8,6 +8,7 @@ links:
     -   title: "**About DangerAspect**"
         link: "/about"
         description: "Profile, links, and more information on me and this site."
+    -   section: DangerAspect sites
     -   title: DangerAspect/Siege
         link: "https://siege.dangeraspect.xyz/"
         description: "A fan site featuring various guides and tools for Rainbow Six: Siege."
