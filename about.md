@@ -4,17 +4,15 @@ title: About
 description: Profile, links, and more information on me and this site.
 ---
 
-### Name
+### Who
 
-DangerAspect (aka [Joey](https://joeyfoo.com/))
+DangerAspect, aka [Joey](https://joeyfoo.com/). They/them.
 
 (It's a somewhat obscure railway reference: in railway signalling parlance, you would refer to a signal with a red light as showing a _danger aspect_. Conversely, a green light would be a proceed aspect.)
 
 ### Description
 
-Software developer, computer science and game design student, admin on [the N3FS](http://n3fs.co.uk/), moderator on [the Rainbow6 Discord](https://discord.gg/Rainbow6). 
-
-Oh, and I [cosplay](https://github.com/joeyfoo/cosplay-notes) too.
+Software developer, computer science and game design student, admin on [N3FS](http://n3fs.co.uk/), moderator on [the Rainbow6 Discord](https://discord.gg/Rainbow6) and the [R6 Round Table of Operators](https://r6roundtable.com/discord). 
 
 ### Profiles
 
@@ -34,9 +32,9 @@ You can find me online on these platforms:
         </a>
     </li>
     <li class="link">
-        <a href="https://twitter.com/joeyfjj">
+        <a href="https://twitter.com/DangerAspect">
             <div class="link-title">Twitter</div>
-            <div class="link-description">@joeyfjj</div>
+            <div class="link-description">@DangerAspect</div>
         </a>
     </li>
     <li class="link">
@@ -53,7 +51,7 @@ You can find me online on these platforms:
     </li>
     <li class="link">
         <a>
-            <div class="link-title">Uplay</div>
+            <div class="link-title">Ubisoft Connect</div>
             <div class="link-description">DangerAspect</div>
         </a>
     </li>
@@ -67,9 +65,9 @@ You can find me online on these platforms:
 
 ### About this site
 
-I use this domain for gaming-related content. 
+DangerAspect.xyz is a domain I use to host my gaming and hobby-related content and projects. 
 
 #### Privacy
 
-This site uses a self-hosted analytics service. No personally-identifiable information is collected. The front 2 bytes of the IP address is stored: the rear 2 bytes are anonymised. I collect these information only to track how many page views I am getting on each page.
+This site uses a self-hosted analytics service. No personally-identifiable information is collected, and no cookies are used. I collect these information to understand how many views I'm getting, and for which content.
 

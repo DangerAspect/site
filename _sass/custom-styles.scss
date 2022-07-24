@@ -1,31 +1,16 @@
-// Override home page width
-main article.home .home-content .link-collection{
-    max-width: none; 
+img.icon{
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+    filter: invert(1);
+    height: 0.8em;
+    width: 0.8em;
 }
 
-// Logo
-header{
-    vertical-align: middle;
-    .site-title{
-        display: flex;
-        flex-direction: row;
-        img{
-            display: block;
-            height: 2rem;
-        }
-        div{
-            font-weight: normal;
-            margin-left: 0.5ch;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5ch;
-        }
-    }
-}
-
-main article.home h1{
-    font-weight: lighter;
-    strong{
-        font-weight: bold;
+.link-collection li
+{
+    &.section{
+        padding: 0.5rem;
+        margin-top: 1rem;
     }
 }
