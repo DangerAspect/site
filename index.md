@@ -9,6 +9,9 @@ links:
         link: "https://twitter.com/DangerAspect"
     -   title: "<img src='/assets/img/instagram.svg' alt='Instagram logo' class='icon'> Instagram"
         link: "https://instagram.com/DangerAspect"
+    -   title: "Mastodon"
+        link: "https://kopiti.am/@DangerAspect"
+        rel: me
     -   title: "About DangerAspect"
         link: "/about"
     -   section: "Places you can find me"
