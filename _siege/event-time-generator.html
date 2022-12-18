@@ -1,0 +1,329 @@
+---
+layout: page
+title: 'Event Time Converter: New event'
+permalink: /siege/event-time/editor
+description: A time zone converter for event time and schedules. 
+date: 2020-05-09
+tag: tool
+
+parent:
+  title: Event Time Converter
+  link: /event-time
+---
+
+<p>
+    This page allows you to generate links for <a href="/event-time">the Event Time Convertor page</a>. 
+</p>
+<p>
+    When using a locale-based timezone in the form below, the date and time should automatically compensate for Daylight Saving Time. 
+</p>
+<p>Find a bug? Please <a href="https://github.com/DangerAspect/siege">report them on GitHub</a>. Thanks! </p>
+
+<hr>
+
+<h2>1/ Event info</h2>
+
+<script src="/assets/scripts/siege/moment.min.js"></script>
+<script src="/assets/scripts/siege/moment-timezone-with-data-2012-2022.min.js"></script>
+
+<form>
+    <label for="event-name">Event name</label>
+    <input type="text" id="event-name">
+
+    <label for="event-date">Date (in the event timezone)</label>
+    <input type="date" id="event-date">
+
+    <label for="event-time">Time (in the event timezone)</label>
+    <input type="time" id="event-time">
+
+    <label for="event-tz">Event time zone</label>
+    <input type="text" id="event-tz" oninput="updateTimezonePrompt()">
+    <div id="event-tz-prompt">
+        <div class="event-tz-prompt-instructions">
+            Acceptable values: type to search; click to complete.
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>2/ Schedule</h2>
+
+    <div id="schedule"></div>
+
+    <input type="button" value="Add schedule item" onclick="addScheduleItem()">
+
+    <hr>
+
+    <h2>3/ Generate</h2>
+
+    <input type="button" value="Generate link" onclick="showLink(false)" oncontextmenu="unhideJSON()">
+    <input type="button" value="Generate link and preview in new tab" onclick="showLink(true)">
+    <input type="button" value="Generate JSON" onclick="showJSON()" id="generateJson" class="hidden">
+</form>
+
+<p id="status-message">Click "generate link" to continue.</p>
+
+<pre id="generated-link"></pre>
+
+<!-- Scripts and styling go below this line! -->
+<style>
+    #event-tz-prompt{
+        display: block;
+        height: 8rem;
+        overflow-y: auto;
+        background-color: rgba(64, 64, 64, 0.5);
+        padding: 0.5rem 1rem; 
+    }
+    .event-tz-prompt-instructions{
+        font-weight: bold;
+        line-height: 2rem;
+    }
+    .event-tz-prompt-suggestion{
+        cursor: pointer;
+    }
+    .schedule-item{
+        margin-bottom: 4rem;
+    }
+    input.schedule-item-date, input.schedule-item-time{
+        display: inline-block;
+        width: 25%;
+    }
+    .schedule-item input.schedule-item-delete{
+        display: inline-block;
+        float: right;
+        width: 25%;
+    }
+    .hidden{
+        display: none;
+    }
+    #generated-link{
+        border: 1px dotted currentColor;
+        padding: 0.5rem;
+        font-family: monospace;
+    }
+    input[type=button].hidden{
+        display: none;
+    }
+</style>
+<script>
+    function createElement(tag, className, type, placeholder, value){
+        var e = document.createElement(tag);
+        if(className != null){
+            e.className = className;
+        }
+        if(type != null){
+            e.type = type;
+        }
+        if(placeholder!= null){
+            e.placeholder = placeholder;
+        }
+        if(value!= null){
+            e.value = value;
+        }
+        return e;
+    }
+    function stripCharacter(original){
+        return original.replace("|", "/");
+    }
+
+    function addScheduleItem(){
+        // QoL: Copy date/time from previous entry
+        let dateValue = document.getElementById("event-date").value;
+        let timeValue = document.getElementById("event-time").value;
+        let dateFields = document.getElementsByClassName("schedule-item-date");
+        if(dateFields.length > 0)
+        {
+            dateValue = dateFields[dateFields.length - 1].value;
+        }
+        let timeFields = document.getElementsByClassName("schedule-item-time");
+        if(timeFields.length > 0)
+        {
+            timeValue = timeFields[timeFields.length - 1].value;
+        }
+
+        var container = createElement("div", "schedule-item");
+        container.appendChild(createElement("input", "schedule-item-name", "text", "Item name"));
+        container.appendChild(createElement("input", "schedule-item-date", "date", "Date", dateValue));
+        container.appendChild(createElement("input", "schedule-item-time", "time", "time", timeValue));
+        var deleteButton = createElement("input", "schedule-item-delete", "button", null, "Delete");
+        deleteButton.onclick = function() {deleteScheduleItem(container)};
+        container.appendChild(deleteButton);
+        document.getElementById("schedule").appendChild(container);
+    }
+    function deleteScheduleItem(container){
+        container.parentNode.removeChild(container);
+    }
+    function populateTimezonePrompt(){
+        var tzList = moment.tz.names();
+        var prompt = document.getElementById("event-tz-prompt");
+        tzList.forEach(element => {
+            var e = createElement("div", "event-tz-prompt-suggestion");
+            e.innerText = element;
+            e.tabIndex = 0;
+            e.onclick = function(){selectTimezone(e.innerText)};
+            prompt.appendChild(e);
+        });
+    }
+    function updateTimezonePrompt(){
+        var tzInput = document.getElementById("event-tz").value;
+        var prompt = document.getElementById("event-tz-prompt");
+
+        for (let index = 0; index < prompt.children.length; index++) {
+            const element = prompt.children[index];
+            if(element.classList.contains("event-tz-prompt-suggestion")){
+                let isVisible = tzInput.length == 0 || element.innerText.toLowerCase().indexOf(tzInput.toLowerCase())>= 0;
+                if(isVisible && element.classList.contains("hidden")){
+                    element.classList.remove("hidden");
+                }
+                else if(!isVisible && !element.classList.contains("hidden")){
+                    element.classList.add("hidden");
+                }
+            }
+        };
+    }
+    function selectTimezone(value){
+        document.getElementById("event-tz").value = value;
+        updateTimezonePrompt();
+    }
+    function showError(message){
+        let msg = document.getElementById("status-message");
+        msg.innerText = `⚠ ${message}`;
+        let link = document.getElementById("generated-link");
+        link.innerText = "";
+    }
+    function generateLink(isJSON=false){
+        let data = {
+            /*eventName: 'Rainbow Six Pro League Season 8 Finals',
+            venueTime: '2018-11-17T10:45:00',
+            timeZone: 'America/Sao_Paulo',
+            schedule: [
+                {name: 'Match 1', venueTime: '2018-11-17T11:00:00'},
+                {name: 'Match 2', venueTime: '2018-11-17T13:30:00'}
+            ]*/
+        };
+
+        //Main Event Info: validation and writing into the data object
+
+        let eventName = document.getElementById('event-name').value;
+        if(eventName.length < 0){
+            showError("You need to specify an event name.");
+            return false;
+        }
+        data['eventName'] = eventName;
+
+        let venueTime = `${document.getElementById("event-date").value}T${document.getElementById("event-time").value}`;
+        console.log(venueTime);
+        if(!moment(venueTime).isValid()){
+            showError("The event time/date provided is invalid.");
+            return false;
+        }
+        data['venueTime'] = venueTime;
+
+        let timeZone = document.getElementById('event-tz').value;
+        if(moment.tz.zone(timeZone) === null){
+            showError("The timezone provided is invalid.");
+            return false;
+        }
+        data['timeZone'] = timeZone;
+
+        //Schedule detail: loops through schedule items
+
+        let scheduleItemElements = document.getElementsByClassName("schedule-item");
+        if(scheduleItemElements.length === 0){
+            data['schedule'] = null;
+        }
+        else{
+            data['schedule'] = [];
+
+            for (let i = 0; i < scheduleItemElements.length; i++) {
+                const element = scheduleItemElements[i];
+
+                let name = null;
+                let date = null;
+                let time = null;
+                for (let i = 0; i < element.children.length; i++) {
+                    const input = element.children[i];
+                    
+                    switch (input.className) {
+                        case "schedule-item-name":
+                            name = input.value;
+                            break;
+                        case "schedule-item-date":
+                            date = input.value;
+                            break;
+                        case "schedule-item-time":
+                            time = input.value;
+                            break;
+                    }
+                }
+
+                //Data validation 
+
+                if(name.length < 1){
+                    showError(`You need to specify a name for schedule item ${i+1}.`);
+                    return false;
+                }
+                
+                let datetime = `${date}T${time}`;
+                if(!moment(datetime).isValid()){
+                    showError(`The time/date provided for schedule item ${i+1} is invalid.`);
+                    return false;
+                }
+                
+                //Write to data object
+                let scheduleData = {
+                    "name": name,
+                    "venueTime": datetime
+                }
+                data['schedule'].push(scheduleData);
+            }
+        }
+
+        //Return url
+
+        // JSON
+        if(isJSON)
+        {
+            return JSON.stringify(data, null, 4); 
+        }
+        //Pipe-separated values
+        else{
+            let valuesString = "";
+            valuesString = `${stripCharacter(data['eventName'])}|${stripCharacter(data['venueTime'])}|${stripCharacter(data['timeZone'])}`;
+            if(data['schedule'] != null){
+                data['schedule'].forEach(element => {
+                    valuesString += `|${stripCharacter(element.name)}|${stripCharacter(element.venueTime)}`;
+                });
+            }
+            //return encodeURIComponent(valuesString);
+            return valuesString.replace(" ", "%20");
+        }
+    }
+
+    function showLink(preview){
+        let result = generateLink();
+        let url = `${window.location.origin}/event-time#${result}`;
+        if(result != false){
+            document.getElementById("status-message").innerText = `The generated event URL is: `;
+            document.getElementById("generated-link").innerText = url;
+            if(preview){
+                window.open(url, "preview");
+            }
+        }
+    }
+
+    function unhideJSON(){
+        document.getElementById("generateJson").classList.remove("hidden");
+    }
+
+    function showJSON(){
+        let result = generateLink(true);
+        if(result != false){
+            document.getElementById("status-message").innerHTML = `The generated event JSON is below. <br><a href="https://github.com/DangerAspect/event-time-data/new/master/data" target="_blank">Click here</a> to create a new file in the event-time-date repository.`;
+            document.getElementById("generated-link").innerText = result;
+        }
+    }
+
+    populateTimezonePrompt();
+    updateTimezonePrompt();
+</script>

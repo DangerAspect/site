@@ -1,0 +1,432 @@
+---
+layout: page
+title: Event Time Converter 
+permalink: /siege/event-time
+description: A time zone converter for event time and schedules. 
+date: 2020-05-09
+tag: tool
+---
+
+<script src="/assets/scripts/siege/moment.min.js"></script>
+<script src="/assets/scripts/siege/moment-timezone-with-data-10-year-range.min.js"></script>
+
+<div id="converter">
+</div>
+
+<hr>
+
+<h2 class="about">About this converter</h2>
+
+<p>
+    This tool allows you to share an event's time and schedule, in the user's own time zone.
+</p>
+
+<h3>Daylight Saving Time</h3>
+<p>
+    If provided with the correct event time zone, this tool should automatically take into 
+    account Daylight Saving Times. This tool uses <a href="https://momentjs.com/timezone/">Moment Timezone</a> 
+    containing data from around 2015 to 2025. 
+</p>
+
+<details>
+    <summary>
+        <h3 style="display:inline;">How it works</h3>
+    </summary>
+
+    <p>
+        Event information is encoded in URL hash (the part after the #).
+    </p>
+    <p>
+        There are two forms the hash may be in: 
+    </p>
+    <ul>
+        <li>
+            <strong>Pipe-separated values</strong>: (e.g. <a href="#This%20is an example event!|2020-01-01T12:00|Asia/Singapore">this link</a>)<br>
+            All information are stored in the URL hash in the form of pipe-separated values.<br>
+            You can use the <a href="/event-time/editor">the editor</a> to create your own links.
+        </li>
+        <li>
+            <strong>Aliases</strong>: (e.g. <a href="#Y5S1">#Y5S1</a>)<br>
+            Event details for these are retrieved from the <a href="https://github.com/DangerAspect/event-time-data">event-time-date repository</a>.<br>
+            Only collaborators with write access to that repository are able to use this. For more info, refer to the repository readme.
+
+        </li>
+    </ul>
+
+</details>
+
+<!-- Scripts and styling go below this line! -->
+<script>
+    "use strict";
+
+    var dateFormat = "dddd, D MMMM YYYY";
+    var shortDateFormat = "D MMM YYYY";
+    var timeFormat = "h:mm a";
+    var tzFormat = "[UTC] Z";
+    var fullDateFormat = `${dateFormat}[, at] ${timeFormat} [(]${tzFormat}[)]`;
+    var calendarDayFormat = {
+        sameDay: ' ',
+        nextDay: ` [the next day]`,
+        nextWeek: ` on ${shortDateFormat}`,
+        lastDay: `  [the day before]`,
+        lastWeek: ` on ${shortDateFormat}`,
+        sameElse: ` on ${shortDateFormat}`
+    };
+
+    /*
+    HOW THIS WORKS
+
+    [On page load or hash change]
+        V
+    readHash()  read data from hash or retrieve from server
+        V
+    update()    assembles and appends DOM elements for showing information
+        |
+        |--getDetectedTimezoneDetails()
+        |--getMainEventDetails()
+        |--getEventSchedule()
+        V
+    [Done]
+    */
+
+    function createElement(tag, className, contents){
+        var e = document.createElement(tag);
+        if(className != null){
+            e.className = className;
+        }
+        if(contents != null){
+            e.innerText = contents
+        }
+        return e;
+    }
+
+    function showError(message, details){
+        document.getElementById("converter").innerHTML = "";
+        let errorMessage = createElement("p", "error-message", message);
+        document.getElementById("converter").appendChild(errorMessage);
+        if(details){
+            let errorDetails = createElement("p", "error-details", message);
+            document.getElementById("converter").appendChild(errorDetails);
+        }
+    }
+
+    function showEmptyState(){
+        document.getElementById("converter").innerHTML = "";
+
+        let container = createElement("div", "empty-state");
+        document.getElementById("converter").appendChild(container);
+
+        let newMessage = createElement("p", "empty-state-message", "There's nothing to see here...");
+        container.appendChild(newMessage);
+
+        let p = createElement("p", "empty-state-new");
+        container.appendChild(p);
+        let a = createElement("a", null, "Create new event");
+        a.href = "/event-time/editor";
+        p.appendChild(a);
+    }
+
+    function update(data, userTimezone){
+        document.getElementById("converter").innerHTML = "";
+
+        var event = getMainEventDetails(data.eventName, data.venueTime, data.timeZone, userTimezone, data.description, data.verified);
+        var schedule = getEventSchedule(data.schedule, data.venueTime, data.timeZone, userTimezone);
+
+        document.getElementById("converter").appendChild(event);
+        if(schedule != null){
+            document.getElementById("converter").appendChild(schedule);
+        }
+    }
+
+    function getMainEventDetails(eventName, venueTime, timeZone, userTimezone, description, isVerified){
+        var container = createElement("div", "main-event");
+        container.appendChild(createElement("h2", "event-name", `📅 ${eventName}`));
+        
+        
+        if(!isVerified){
+            let intro = createElement("p", "important", `This is a public time zone converter tool. Event details are provided by the creator of the link.`);
+            container.appendChild(intro);
+        }
+
+        if(description){
+            var desc = createElement("p", "event-description")
+            desc.innerHTML = description;
+            container.appendChild(desc);
+        }
+
+        if(venueTime != null){
+            var eventMoment = moment.tz(venueTime, timeZone);
+            var eventMomentLocal = moment(eventMoment).tz(userTimezone);
+
+            container.appendChild(createElement("div", "event-time", eventMomentLocal.format(timeFormat)));
+
+            var eventDate = createElement("div", "event-date", eventMomentLocal.format(dateFormat));
+            eventDate.appendChild(createElement("span", "event-timezone", ` (${eventMomentLocal.format(tzFormat)})`));
+            container.appendChild(eventDate);
+
+            container.appendChild(createElement("div", "event-localisation", `${eventMomentLocal.fromNow()}.`));
+            container.appendChild(createElement("div", "event-venue", `Venue time: ${eventMoment.format(fullDateFormat)}`));
+        }
+
+        return container;
+    }
+
+    function getEventSchedule(schedule, venueTime, timeZone, userTimezone){
+        if(schedule == null || schedule.length === 0){
+            return null;
+        }
+
+        var eventMoment = null;
+        var eventMomentLocal = null;
+
+        if(venueTime)
+        {
+            eventMoment = moment.tz(venueTime, timeZone);
+            eventMomentLocal = moment(eventMoment).tz(userTimezone);
+        }
+
+        var scheduleElement = createElement("div", "schedule");
+        scheduleElement.appendChild(createElement("h3", null, "Schedule"));
+        var container = createElement("div", "schedule-table");
+        scheduleElement.appendChild(container);
+
+        schedule.forEach(item => {
+            if(item.separator == true){
+                container.appendChild(createElement("hr", "schedule-separator", null));
+                return;
+            }
+            var scheduleMoment = moment.tz(item.venueTime, timeZone);
+            var scheduleMomentLocal = moment(scheduleMoment).tz(userTimezone);
+
+            var scheduleItem = createElement("div", "schedule-item");
+
+            var scheduleTime = createElement("div", "schedule-item-time");
+
+            var scheduleTimeLocal = createElement("div", "schedule-item-time-local", scheduleMomentLocal.format(timeFormat));
+            if(venueTime)
+            {
+                scheduleTimeLocal.appendChild(createElement("span", "schedule-item-time-local-detail", 
+                    `${scheduleMomentLocal.calendar(eventMomentLocal, calendarDayFormat)}`));
+            }
+            else{
+                scheduleTimeLocal.insertBefore(createElement("span", "schedule-item-time-local-detail", 
+                    `${scheduleMomentLocal.format(shortDateFormat)} at `), scheduleTimeLocal.childNodes[0]);
+            }
+            scheduleTime.appendChild(scheduleTimeLocal);
+            
+            var scheduleTimeVenue = null;
+            if(venueTime)
+            {
+                scheduleTimeVenue = createElement("div", "schedule-item-time-venue", `Venue time: ${scheduleMoment.format(timeFormat)}`);
+                scheduleTimeVenue.appendChild(createElement("span", "schedule-item-time-venue-detail", 
+                    `${scheduleMoment.calendar(eventMoment, calendarDayFormat)}`));
+            }
+            else
+            {
+                scheduleTimeVenue = createElement("div", "schedule-item-time-venue", `Venue: ${scheduleMoment.format(`${shortDateFormat}[,] ${timeFormat} [(]${tzFormat}[)]`)}`);
+            }
+            scheduleTime.appendChild(scheduleTimeVenue);
+            
+            scheduleItem.appendChild(scheduleTime);
+            
+            let scheduleName = createElement("div", "schedule-item-name", item.name);
+            scheduleName.appendChild(createElement("div", "schedule-item-countdown", `${scheduleMoment.fromNow()}`));
+            scheduleItem.appendChild(scheduleName);
+
+            container.appendChild(scheduleItem);
+        });
+
+        return scheduleElement;
+    }
+
+    function readHash(){
+        console.log("Reading hash...")
+        var data = null;
+
+        let hash = null;
+        if(window.location.hash.length > 2){
+            hash = window.location.hash.substring(1);
+        }
+
+        console.log(hash);
+
+        /*//Pre-set events
+        if(hash != null && hash in presetEvents){
+            data = presetEvents[hash];
+            // Indicates data is read from page rather than a provided pipe-separated hash
+            data.verified = true;
+        }*/
+
+        //Short links
+        if(hash != null && hash.indexOf("|") == -1)
+        {
+            const urlBase = "https://raw.githubusercontent.com/DangerAspect/event-time-data/master/data";
+            showError("Requesting from server...");
+            fetch(`${urlBase}/${hash.replace("/", "-")}.json`).then(response => response.json())
+            .then(data => {
+                    var userTimezone = moment.tz.guess();
+                    data.verified = true;
+                    update(data, userTimezone);
+                })
+            .catch(data => {
+                console.log(data);
+                showError("Error encountered retrieving data.");
+            });
+        }
+
+        // JSON + EncodeURIComponent 
+        /*else if(window.location.hash.length > 2){
+            try {
+                data = JSON.parse(decodeURIComponent(window.location.hash.substring(1)));
+            } catch (error) {
+                showError("Unable to load: the event data in the URL is invalid.");
+            }
+        }*/
+        
+        //Pipe-separated values
+        else if(hash != null && decodeURIComponent(hash).split("|").length >= 3){
+            try {
+                let input = decodeURIComponent(hash).split("|");
+                data = {
+                    eventName: input[0],
+                    venueTime: input[1],
+                    timeZone: input[2],
+                    schedule: null
+                };
+                //Validate dates are valid
+                if(input.length > 3 && (input.length - 3) % 2 === 0){
+                    data['schedule'] = [];
+                    for (let i = 3; i < input.length; i+=2) {
+                        data['schedule'].push({
+                            name: input[i],
+                            venueTime: input[i+1]
+                        });
+                    }
+                }
+
+                console.log(data);
+            } catch (error) {
+                showError("Unable to load: the event data in the URL is invalid.");
+                console.log(error);
+            }
+        }
+        else if(hash != null){
+                showError("Unable to load: the event data in the URL is invalid.");
+        }
+        else{
+                showEmptyState();
+        }
+
+        // Guess user time zone
+        if(data != null){
+            var userTimezone = moment.tz.guess();
+            update(data, userTimezone);
+        }
+    }
+
+    readHash();
+    window.addEventListener("hashchange", readHash, false);
+</script>
+<style>
+    .error-message{
+        font-size: 2rem;
+        line-height: 1.0;
+        margin: 8rem auto;
+        opacity: 0.5;
+        text-align: center;
+    }
+    .empty-state{
+        padding: 8rem 0;
+        text-align: center;
+    }
+    .empty-state-message{
+        font-size: 1.5rem;
+        opacity: 0.5;
+    }
+
+    .about{
+        margin-top: 8rem;
+    }
+
+    .event-description{
+        margin-bottom: 2rem;
+    }
+    .main-event{
+        margin-bottom: 2rem;
+    }
+
+    .event-time{
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+    .event-date{
+        font-size: 1.5rem;
+        line-height: 1.0;
+        margin-bottom: 1rem;
+    }
+
+    .event-localisation, .event-venue{
+        opacity: 0.75;
+    }
+
+    /*Schedule*/
+    .schedule-table{
+        display: table;
+        width: 100%;
+        border-collapse: separate;
+    }
+    .schedule-item{
+        display: table-row;
+        min-height: 5rem;
+    }
+    .schedule-item:hover{
+        background-color: rgba(128, 128, 128, 0.5);
+    }
+    .schedule-item-time{
+        display: table-cell;
+        padding-right: 2rem;
+        padding-top: 0.5rem;
+        white-space: pre; 
+    }
+    .schedule-item-time-local{
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .schedule-item-time-venue{
+        opacity: 0.5;
+    }
+    .schedule-item-time-local span, .schedule-item-time-venue span{
+        font-size: 1rem;
+    }
+    .schedule-item-name{
+        display: table-cell;
+        font-size: 1.5rem;
+        width: 100%;
+        padding-bottom: 0.5rem;
+    }
+    .schedule-item-countdown{
+        opacity: 0.5;
+        font-size: 1rem;
+    }
+    .schedule-separator{
+        display: table-row;
+        height: 2rem;
+        border: none;
+    }
+    @media (max-width: 640px){
+        .schedule-item-time{
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .schedule-item-name{
+            display: block;
+        }
+        .schedule-item{
+            display: block;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted #808080;
+        }
+    }
+</style>

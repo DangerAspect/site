@@ -12,3 +12,19 @@ header_pages:
   - about.md
 
 permalink: pretty
+
+collections:
+  siege:
+    output: true
+    permalink: /:collection/:name
+    sort_by: name
+
+defaults:
+  -
+    scope: 
+      path: ""
+      type: siege
+    values:
+      parent:
+        link: "/siege"
+        title: "Siege"
