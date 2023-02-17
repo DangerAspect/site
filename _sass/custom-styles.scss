@@ -14,3 +14,27 @@ img.icon{
         margin-top: 1rem;
     }
 }
+
+.important
+{
+    border-radius: 1rem;
+    border: 1px dotted currentColor;
+    padding: 1rem;
+    :last-child{
+        margin-bottom: 0;
+    }
+
+    hr{
+        margin: 1rem auto;
+    }
+}
+
+.page-parent a:before
+{
+    content: '← ';
+}
+
+h1
+{
+    font-weight: 500;
+}

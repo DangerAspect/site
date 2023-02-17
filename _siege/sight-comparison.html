@@ -1,0 +1,215 @@
+---
+layout: page
+title: (Outdated) Comparison of Weapon Sights
+permalink: /siege/sights
+description: A comparison tool between the 1x scopes available as weapon attachments in Rainbow Six Siege. 
+image: /assets/img/siege/sight-comparison/thumb.png
+date: 2019-03-24
+tag: tool
+---
+
+{% include siege/outdated.html details="Since S7S1 Demon Veil, weapon sights are now universal. All weapons with access to a certain magnification level can be equipped with available sight options."%}
+
+<p>
+    This is a comparison between the six types of 1x scopes available as weapon attachments. This comparison does not include the 2.5x-magnification ACOG and "The Scope" sights, or default weapon sights. 
+</p>
+
+<p>
+    <a href="#comparison-options-bg" class="button narrow">Jump to options</a>
+</p>
+
+<!-- Special styling for scope SVG -->
+<style>
+    #comparison-preview svg{
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: #000;
+    }
+    .settings-header{
+        margin: 0 auto;
+        line-height: 48px;
+    }
+
+    #comparison-toggle-nato-holographic:checked + label{
+        background-color: rgba(127, 255, 0, 0.5);
+    }
+    #comparison-toggle-nato-reddot:checked + label{
+        background-color: rgba(229, 0, 0, 0.5);
+    }
+    #comparison-toggle-nato-reflex:checked + label{
+        background-color: rgba(0, 64, 255, 0.5);
+    }
+    #comparison-toggle-ru-holographic:checked + label{
+        background-color: rgba(0, 255, 255, 0.5);
+    }
+    #comparison-toggle-ru-reddot:checked + label{
+        background-color: rgba(255, 191, 0, 0.5);
+    }
+    #comparison-toggle-ru-reflex:checked + label{
+        background-color: rgba(128, 0, 255, 0.5);
+    }
+
+    svg #outline g{
+        mix-blend-mode: lighten;
+    }
+
+    .comparison-options{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .comparison-category{
+        flex: auto;
+    }
+    #comparison-options-outlines{
+        width: 24rem;
+    }
+</style>
+
+<!-- Pre-fetch-->
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/nato-holographic.jpg">
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/nato-reddot.jpg">
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/nato-reflex.jpg">
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/ru-holographic.jpg">
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/ru-reddot.jpg">
+<link rel="prefetch" href="/assets/img/siege/sight-comparison/ru-reflex.jpg">
+
+<!-- Embed SVG document after the doctype -->
+<div id="comparison-preview" class="full-width">
+    {% capture svg %}
+    {% include siege/sight-comparison/sights.svg %}
+    {% endcapture %}
+    {% assign svgsplit = svg | split: 'svg11.dtd">' %}
+    {% assign svgpart = svgsplit[1] %}
+    {{ svgpart }}
+</div>  
+
+<div class="comparison-options">
+    <div id="comparison-options-bg" class="comparison-category">
+        <p>
+            Use this tool to compare the body and viewport sizes of 1x weapon sight attachments. Reference screenshots taken from the Y4S1.1 update.
+        <h4>NATO vs. Russian sights</h4>
+        <p>
+            The NATO sights can be equipped on most guns, while Russian operators (i.e. Kapkan, Tachanka, Glaz, Fuze, and Finka) feature a unique set of Russian sights. 
+        </p>
+
+        <h3 class="settings-header">Backdrop</h3>
+        <select id="comparison-bg" onchange="toggleBackdrop(this.value)">
+            <option value="none" selected>Black background</option>
+            <option value="bg-scene">Empty scene</option>
+            <optgroup label="NATO">
+                <option value="nato-holographic">NATO: Holographic</option>
+                <option value="nato-reddot">NATO: Red Dot</option>
+                <option value="nato-reflex">NATO: Reflex</option>
+            </optgroup>
+            <optgroup label="Russian (Spetsnaz)">
+                <option value="ru-holographic">Russian: Holographic</option>
+                <option value="ru-reddot">Russian: Red Dot</option>
+                <option value="ru-reflex">Russian: Reflex</option>
+            </optgroup>
+        </select>
+
+        <p>
+            <a href="#" class="button" id="comparison-fullscreen">View fullscreen</a>
+        </p>
+    </div>
+
+    <div id="comparison-options-outlines" class="comparison-category">
+        <h4 class="settings-header">NATO</h4>
+        <input type="checkbox" id="comparison-toggle-nato-holographic" value="nato-holographic" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-nato-holographic">
+            <div>Holographic</div>
+        </label>
+        <br>
+        <input type="checkbox" id="comparison-toggle-nato-reddot" value="nato-reddot" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-nato-reddot">
+            <div>Red Dot</div>
+        </label>
+        <br>
+        <input type="checkbox" id="comparison-toggle-nato-reflex" value="nato-reflex" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-nato-reflex">
+            <div>Reflex</div>
+        </label>
+
+        <h4 class="settings-header">Russian (Spetsnaz)</h4>
+        <input type="checkbox" id="comparison-toggle-ru-holographic" value="ru-holographic" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-ru-holographic">
+            <div>Holographic</div>
+        </label>
+        <br>
+        <input type="checkbox" id="comparison-toggle-ru-reddot" value="ru-reddot" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-ru-reddot">
+            <div>Red Dot</div>
+        </label>
+        <br>
+        <input type="checkbox" id="comparison-toggle-ru-reflex" value="ru-reflex" onchange="toggleLayer(this.value, this.checked)">
+        <label for="comparison-toggle-ru-reflex">
+            <div>Reflex</div>
+        </label>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    window.addEventListener("load", resetLayers);
+    var sights = ["nato-holographic", "nato-reddot", "nato-reflex", "ru-holographic", "ru-reddot", "ru-reflex"];
+    var highestZIndex = 0;
+
+    function getBackdropString(name){
+        return `url(/assets/img/siege/sight-comparison/${name}.jpg)`;
+    }
+    function resetLayers(){
+        for (var index = 0; index < sights.length; index++) {
+            document.getElementById(sights[index]).style.visibility = "hidden";
+        }
+        //Initial
+        console.log(sights[0]);
+        toggleBackdrop("bg-scene");
+        toggleLayer(sights[0], true);
+    }
+    function toggleLayer(target, isVisible){
+        var sightElement = document.getElementById(target);
+        var parentElement = document.getElementById("outline");
+
+        sightElement.style.visibility = isVisible ? "visible" : "hidden";
+        if(isVisible){
+            parentElement.removeChild(sightElement);
+            parentElement.appendChild(sightElement);
+        }
+        document.getElementById(`comparison-toggle-${target}`).checked = isVisible;
+    }
+    function toggleBackdrop(target){
+        var isImageBackdrop = (target != "none");
+        var backdrop = document.getElementById("comparison-preview");
+        var backdrop = document.getElementsByTagName("svg")[0];
+
+        if(isImageBackdrop){
+            document.getElementById("bg-rect").style.visibility = "hidden";
+            backdrop.style.backgroundImage = getBackdropString(target);
+        }
+        else{
+            document.getElementById("bg-rect").style.visibility = "visible";
+            backdrop.style.backgroundImage = "";
+        }
+        document.getElementById("comparison-bg").value = target;
+    }
+    function enterFullscreen(evt){
+        console.log(evt);
+        evt.preventDefault();
+
+        var preview = document.getElementById("comparison-preview");
+        if (preview.requestFullscreen) {
+            preview.requestFullscreen();
+        } else if (preview.webkitRequestFullscreen) {
+            preview.webkitRequestFullscreen();
+        } else if (preview.mozRequestFullScreen) {
+            preview.mozRequestFullScreen();
+        } else if (preview.msRequestFullscreen) {
+            preview.msRequestFullscreen();
+        } else{
+            console.error("Fullscreen API not supported.");
+        }
+    }
+
+    document.getElementById("comparison-fullscreen").addEventListener("click", enterFullscreen);
+</script>

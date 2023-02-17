@@ -1,0 +1,16 @@
+<div class="important">
+    <p>
+        <strong>⚠️ OUTDATED</strong>: 
+        This article contains <strong>outdated information</strong>.
+    </p>
+    <p>
+        It was last updated on <strong>{{ page.date | date_to_string }}</strong>, and is only retained 
+        here for posterity and to avoid breaking existing links.
+    </p>
+    {% if include.details %}
+    <hr>
+    <p>
+        {{include.details}}
+    </p>
+    {% endif %}
+</div>

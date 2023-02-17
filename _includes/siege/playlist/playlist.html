@@ -1,0 +1,535 @@
+<h3>Toggle leagues</h3>
+
+<p>
+    You can hide/show other leagues with these toggles:
+</p>
+
+<form id="toggle-panel" onchange="toggleColVisibility();">
+    <p><strong>R6 Circuit</strong></p>
+
+    <input type="checkbox" id="toggle-eslbo1" value="row-eslbo1" checked>
+    <label for="toggle-eslbo1">Best of 1</label>
+
+    <input type="checkbox" id="toggle-eslbo2" value="row-eslbo2" checked>
+    <label for="toggle-eslbo2">Best of 2</label>
+
+    <input type="checkbox" id="toggle-eslbo3" value="row-eslbo3" checked>
+    <label for="toggle-eslbo3">Best of 3</label>
+
+    <input type="checkbox" id="toggle-eslbo5" value="row-eslbo5" checked>
+    <label for="toggle-eslbo5">Best of 5</label>
+
+    <br>
+
+    <input type="checkbox" id="toggle-r6tm" value="row-r6tm" checked>
+    <label for="toggle-r6tm">Rainbow 6 TMs</label>
+
+    <input type="checkbox" id="toggle-default" value="row-default" checked>
+    <label for="toggle-default">Default</label>
+</form>
+
+<h3>Settings</h3>
+
+<table class="full-width table-playlist">
+    <thead>
+        <tr style="position: sticky; top: 0; background-color: black;">
+            <th class="row-header">Playlist</th>
+            <th class="row-eslbo1">R6 Circuit <br>(Best of 1)</th><!--ESLBo1-->
+            <th class="row-eslbo2">R6 Circuit <br>(Best of 2)</th><!--ESLBo2-->
+            <th class="row-eslbo3">R6 Circuit <br>(Best of 3)</th><!--ESLBo3-->
+            <th class="row-eslbo5">R6 Circuit <br>(Best of 5)</th><!--ESLBo5-->
+            <th class="row-r6tm">Rainbow 6 TMs</th><!--R6TM-->
+            <th class="row-default">Default game settings</th> <!--Default-->
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="row-header">URL</th>
+            <td class="row-eslbo1"><a href="https://r6esports.com/">Website</a></td>
+            <td class="row-eslbo2"><a href="https://r6esports.com/">Website</a></td>
+            <td class="row-eslbo3"><a href="https://r6esports.com/">Website</a></td>
+            <td class="row-eslbo5"><a href="https://r6esports.com/">Website</a></td>
+            <td class="row-r6tm"><a href="https://fce.gg/R6TM">Website</a></td>
+            <td class="row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Source</th>
+            <td class="row-eslbo1"><a href="https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2EmWNACHL54HCObvppYgIe/4fc5dd9ab8056b76629be19f3cbbd3b0/r6_global_rulebook2022.pdf">Rulebook (PDF)</a></td>
+            <td class="row-eslbo2"><a href="https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2EmWNACHL54HCObvppYgIe/4fc5dd9ab8056b76629be19f3cbbd3b0/r6_global_rulebook2022.pdf">Rulebook (PDF)</a></td>
+            <td class="row-eslbo3"><a href="https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2EmWNACHL54HCObvppYgIe/4fc5dd9ab8056b76629be19f3cbbd3b0/r6_global_rulebook2022.pdf">Rulebook (PDF)</a></td>
+            <td class="row-eslbo5"><a href="https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/2EmWNACHL54HCObvppYgIe/4fc5dd9ab8056b76629be19f3cbbd3b0/r6_global_rulebook2022.pdf">Rulebook (PDF)</a></td>
+            <td class="row-r6tm"><a href="https://blog.tmmpro.app/r6-tm-rulebook/">Rulebook</a></td>
+            <td class="row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Notes</th>
+            <td class="row-eslbo1"></td>
+            <td class="row-eslbo2"></td>
+            <td class="row-eslbo3"></td>
+            <td class="row-eslbo5"></td>
+            <td class="row-r6tm"></td>
+            <td class="row-default">These are the default Settings when creating a new playlist.</td>
+        </tr>
+        <tr>
+            <th class="setting-menu">Playlist and Map Settings</th>
+            <td class="setting-menu row-eslbo1"></td>
+            <td class="setting-menu row-eslbo2"></td>
+            <td class="setting-menu row-eslbo3"></td>
+            <td class="setting-menu row-eslbo5"></td>
+            <td class="setting-menu row-r6tm"></td>
+            <td class="setting-menu row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Map Pool</th>
+            <td class="row-eslbo1">Bank<br> Border<br> Chalet<br> Clubhouse<br> Kafe<br> Oregon<br> Skyscraper<br> Theme Park<br> Villa</td>
+            <td class="row-eslbo2">Bank<br> Border<br> Chalet<br> Clubhouse<br> Kafe<br> Oregon<br> Skyscraper<br> Theme Park<br> Villa</td>
+            <td class="row-eslbo3">Bank<br> Border<br> Chalet<br> Clubhouse<br> Kafe<br> Oregon<br> Skyscraper<br> Theme Park<br> Villa</td>
+            <td class="row-eslbo5">Bank<br> Border<br> Chalet<br> Clubhouse<br> Kafe<br> Oregon<br> Skyscraper<br> Theme Park<br> Villa</td>
+            <td class="row-r6tm">Bank<br> Border<br> Chalet<br> Clubhouse<br> Kafe<br> Oregon<br> Skyscraper<br> Theme Park<br> Villa</td>
+            <td class="row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">HUD Settings</th>
+            <td class="row-eslbo1">Pro League</td>
+            <td class="row-eslbo2">Pro League</td>
+            <td class="row-eslbo3">Pro League</td>
+            <td class="row-eslbo5">Pro League</td>
+            <td class="row-r6tm">Normal</td>
+            <td class="row-default">Normal</td>
+        </tr>
+        <tr>
+            <th class="setting-menu">Match Settings</th>
+            <td class="setting-menu row-eslbo1"></td>
+            <td class="setting-menu row-eslbo2"></td>
+            <td class="setting-menu row-eslbo3"></td>
+            <td class="setting-menu row-eslbo5"></td>
+            <td class="setting-menu row-r6tm"></td>
+            <td class="setting-menu row-default"></td>
+        </tr>
+        <tr>
+            <th class="setting-section">Banning</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Number of Bans</th>
+            <td class="row-eslbo1">4</td>
+            <td class="row-eslbo2">4</td>
+            <td class="row-eslbo3">4</td>
+            <td class="row-eslbo5">4</td>
+            <td class="row-r6tm">4</td>
+            <td class="row-default">Off</td>
+        </tr>
+        <tr>
+            <th class="row-header">Ban Timer</th>
+            <td class="row-eslbo1">20</td>
+            <td class="row-eslbo2">20</td>
+            <td class="row-eslbo3">20</td>
+            <td class="row-eslbo5">20</td>
+            <td class="row-r6tm">20</td>
+            <td class="row-default setting-disabled">20</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Rounds</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Number of Rounds</th>
+            <td class="row-eslbo1">12</td>
+            <td class="row-eslbo2">12</td>
+            <td class="row-eslbo3">12</td>
+            <td class="row-eslbo5">12</td>
+            <td class="row-r6tm">12</td>
+            <td class="row-default">6</td>
+        </tr>
+        <tr>
+            <th class="row-header">Attacker/Defender Role swap</th>
+            <td class="row-eslbo1">6</td>
+            <td class="row-eslbo2">6</td>
+            <td class="row-eslbo3">6</td>
+            <td class="row-eslbo5">6</td>
+            <td class="row-r6tm">6</td>
+            <td class="row-default">1</td>
+        </tr>
+        <tr>
+            <th class="row-header">Overtime Rounds</th>
+            <td class="row-eslbo1">0 or 3</td>
+            <td class="row-eslbo2">0 or 3</td>
+            <td class="row-eslbo3">3</td>
+            <td class="row-eslbo5">3 or Infinite</td>
+            <td class="row-r6tm">3</td>
+            <td class="row-default">3</td>
+        </tr>
+        <tr>
+            <th class="row-header">Overtime Score Difference</th>
+            <td class="row-eslbo1">2</td>
+            <td class="row-eslbo2">2</td>
+            <td class="row-eslbo3">2</td>
+            <td class="row-eslbo5">2</td>
+            <td class="row-r6tm">2</td>
+            <td class="row-default">1</td>
+        </tr>
+        <tr>
+            <th class="row-header">Overtime Role Change</th>
+            <td class="row-eslbo1">1</td>
+            <td class="row-eslbo2">1</td>
+            <td class="row-eslbo3">1</td>
+            <td class="row-eslbo5">1</td>
+            <td class="row-r6tm">1</td>
+            <td class="row-default">1</td>
+        </tr>
+        <tr>
+            <th class="row-header">Objective Rotation Parameter</th>
+            <td class="row-eslbo1">2</td>
+            <td class="row-eslbo2">2</td>
+            <td class="row-eslbo3">2</td>
+            <td class="row-eslbo5">2</td>
+            <td class="row-r6tm">2</td>
+            <td class="row-default">Off</td>
+        </tr>
+        <tr>
+            <th class="row-header">Objective Type Rotation</th>
+            <td class="row-eslbo1">Rounds Played</td>
+            <td class="row-eslbo2">Rounds Played</td>
+            <td class="row-eslbo3">Rounds Played</td>
+            <td class="row-eslbo5">Rounds Played</td>
+            <td class="row-r6tm">Rounds Played</td>
+            <td class="row-default">Rounds Played</td>
+        </tr>
+        <tr>
+            <th class="row-header">Pick Phase Timer</th>
+            <td class="row-eslbo1">15</td>
+            <td class="row-eslbo2">15</td>
+            <td class="row-eslbo3">15</td>
+            <td class="row-eslbo5">15</td>
+            <td class="row-r6tm">15</td>
+            <td class="row-default">30</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Health &amp; Damage</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Damage HP</th>
+            <td class="row-eslbo1">100</td>
+            <td class="row-eslbo2">100</td>
+            <td class="row-eslbo3">100</td>
+            <td class="row-eslbo5">100</td>
+            <td class="row-r6tm">100</td>
+            <td class="row-default">100</td>
+        </tr>
+        <tr>
+            <th class="row-header">Friendly Fire Damage</th>
+            <td class="row-eslbo1">100</td>
+            <td class="row-eslbo2">100</td>
+            <td class="row-eslbo3">100</td>
+            <td class="row-eslbo5">100</td>
+            <td class="row-r6tm">100</td>
+            <td class="row-default">100</td>
+        </tr>
+        <tr>
+            <th class="row-header">Friendly Fire in Prep Phase</th>
+            <td class="row-eslbo1"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo2"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo3"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo5"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-r6tm"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-default">Off</td>
+        </tr>
+        <tr>
+            <th class="row-header">Reverse Friendly Fire</th>
+            <td class="row-eslbo1"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo2"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo3"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo5"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-r6tm">Off</td>
+            <td class="row-default">Off</td>
+        </tr>
+        <tr>
+            <th class="row-header">Injured</th>
+            <td class="row-eslbo1">20</td>
+            <td class="row-eslbo2">20</td>
+            <td class="row-eslbo3">20</td>
+            <td class="row-eslbo5">20</td>
+            <td class="row-r6tm">20</td>
+            <td class="row-default">20</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Character Control</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Sprint</th>
+            <td class="row-eslbo1">On</td>
+            <td class="row-eslbo2">On</td>
+            <td class="row-eslbo3">On</td>
+            <td class="row-eslbo5">On</td>
+            <td class="row-r6tm">On</td>
+            <td class="row-default">On</td>
+        </tr>
+        <tr>
+            <th class="row-header">Lean</th>
+            <td class="row-eslbo1">On</td>
+            <td class="row-eslbo2">On</td>
+            <td class="row-eslbo3">On</td>
+            <td class="row-eslbo5">On</td>
+            <td class="row-r6tm">On</td>
+            <td class="row-default">On</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Death</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Death Duration</th>
+            <td class="row-eslbo1"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo2"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo3"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo5"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-r6tm"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-default">3</td>
+        </tr>
+        <tr>
+            <th class="row-header">Death Replay</th>
+            <td class="row-eslbo1">Off</td>
+            <td class="row-eslbo2">Off</td>
+            <td class="row-eslbo3">Off</td>
+            <td class="row-eslbo5">Off</td>
+            <td class="row-r6tm">Off</td>
+            <td class="row-default">On</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Tactical Timeout</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Requests Available per Team</th>
+            <td class="row-eslbo1">1</td>
+            <td class="row-eslbo2">1</td>
+            <td class="row-eslbo3">1</td>
+            <td class="row-eslbo5">1</td>
+            <td class="row-r6tm">Off?</td>
+            <td class="row-default">Off</td>
+        </tr>
+        <tr>
+            <th class="row-header">Allow Requests From</th>
+            <td class="row-eslbo1"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo2"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo3"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-eslbo5"><abbr title="Not explicitly stated in rulebook.">???</abbr></td>
+            <td class="row-r6tm"></td>
+            <td class="row-default setting-disabled">Players</td>
+        </tr>
+        <tr>
+            <th class="row-header">Timeout Duration</th>
+            <td class="row-eslbo1">45</td>
+            <td class="row-eslbo2">45</td>
+            <td class="row-eslbo3">45</td>
+            <td class="row-eslbo5">45</td>
+            <td class="row-r6tm"></td>
+            <td class="row-default setting-disabled">45</td>
+        </tr>
+        <tr>
+            <th class="setting-menu">Game Mode</th>
+            <td class="setting-menu row-eslbo1"></td>
+            <td class="setting-menu row-eslbo2"></td>
+            <td class="setting-menu row-eslbo3"></td>
+            <td class="setting-menu row-eslbo5"></td>
+            <td class="setting-menu row-r6tm"></td>
+            <td class="setting-menu row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Game Mode</th>
+            <td class="row-eslbo1">Bomb</td>
+            <td class="row-eslbo2">Bomb</td>
+            <td class="row-eslbo3">Bomb</td>
+            <td class="row-eslbo5">Bomb</td>
+            <td class="row-r6tm">Bomb</td>
+            <td class="row-default">Hostage</td>
+        </tr>
+        <tr>
+            <th class="setting-menu">Game Mode Settings</th>
+            <td class="setting-menu row-eslbo1"></td>
+            <td class="setting-menu row-eslbo2"></td>
+            <td class="setting-menu row-eslbo3"></td>
+            <td class="setting-menu row-eslbo5"></td>
+            <td class="setting-menu row-r6tm"></td>
+            <td class="setting-menu row-default"></td>
+        </tr>
+        <tr>
+            <th class="setting-section">Bomb Parameters</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Plant Duration</th>
+            <td class="row-eslbo1">7</td>
+            <td class="row-eslbo2">7</td>
+            <td class="row-eslbo3">7</td>
+            <td class="row-eslbo5">7</td>
+            <td class="row-r6tm">7</td>
+            <td class="row-default">7</td>
+        </tr>
+        <tr>
+            <th class="row-header">Defuse Duration</th>
+            <td class="row-eslbo1">7</td>
+            <td class="row-eslbo2">7</td>
+            <td class="row-eslbo3">7</td>
+            <td class="row-eslbo5">7</td>
+            <td class="row-r6tm">7</td>
+            <td class="row-default">7</td>
+        </tr>
+        <tr>
+            <th class="row-header">Fuse Time</th>
+            <td class="row-eslbo1">45</td>
+            <td class="row-eslbo2">45</td>
+            <td class="row-eslbo3">45</td>
+            <td class="row-eslbo5">45</td>
+            <td class="row-r6tm">45</td>
+            <td class="row-default">45</td>
+        </tr>
+        <tr>
+            <th class="row-header">Defuser Carrier Selection</th>
+            <td class="row-eslbo1">On</td>
+            <td class="row-eslbo2">On</td>
+            <td class="row-eslbo3">On</td>
+            <td class="row-eslbo5">On</td>
+            <td class="row-r6tm">On</td>
+            <td class="row-default">On</td>
+        </tr>
+        <tr>
+            <th class="setting-section">Phases</th>
+            <td class="setting-section row-eslbo1"></td>
+            <td class="setting-section row-eslbo2"></td>
+            <td class="setting-section row-eslbo3"></td>
+            <td class="setting-section row-eslbo5"></td>
+            <td class="setting-section row-r6tm"></td>
+            <td class="setting-section row-default"></td>
+        </tr>
+        <tr>
+            <th class="row-header">Preperation Phase Duration</th>
+            <td class="row-eslbo1">45</td>
+            <td class="row-eslbo2">45</td>
+            <td class="row-eslbo3">45</td>
+            <td class="row-eslbo5">45</td>
+            <td class="row-r6tm">45</td>
+            <td class="row-default">45</td>
+        </tr>
+        <tr>
+            <th class="row-header">Action Phase Duration</th>
+            <td class="row-eslbo1">180</td>
+            <td class="row-eslbo2">180</td>
+            <td class="row-eslbo3">180</td>
+            <td class="row-eslbo5">180</td>
+            <td class="row-r6tm">180</td>
+            <td class="row-default">180</td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .table-playlist
+    {
+        table-layout: fixed;
+    }
+
+    label{
+        padding-right: 1rem;
+    }
+
+    #toggle-panel{
+        margin-bottom: 2rem;
+        line-height: 2rem;
+    }
+
+    .row-header{
+        width: 16rem;
+    }
+    .row-eslbo1, .row-eslbo2, .row-eslbo3, .row-eslbo5, .row-r6tm, .row-default{
+        width: auto;
+    }
+    .row-hidden{
+        display: none;
+    }
+
+    .table-playlist th{
+        text-align: left;
+        font-weight: 400;
+    }
+
+    .setting-disabled{
+        opacity: 0.25;
+    }
+
+    .table-playlist *.setting-menu{
+        background-color: #333;
+        text-align: center;
+        font-weight: 700;
+    }
+    .table-playlist *.setting-section{
+        background-color: #222;
+        border-top: 1px solid currentColor;
+        text-align: center;
+        font-weight: 600;
+    }
+
+</style>
+
+<script>
+    function toggleColVisibility(){
+        const panel = document.getElementById("toggle-panel");
+        const checkboxes = panel.getElementsByTagName("input");
+        for (let i = 0; i < checkboxes.length; i++) {
+            const checkbox = checkboxes[i];
+
+            const isVisible = checkbox.checked;
+            const leagueName = checkbox.value;
+
+            const tdElements = document.getElementsByClassName(leagueName);
+            for (let x = 0; x < tdElements.length; x++) {
+                const tdElement = tdElements[x];
+                
+                if(isVisible){
+                    tdElement.classList.remove("row-hidden");
+                }
+                else{
+                    tdElement.classList.add("row-hidden");
+                }
+            }
+        }
+    }
+    window.onload = toggleColVisibility;
+</script>
