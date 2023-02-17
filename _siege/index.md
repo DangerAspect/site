@@ -1,21 +1,15 @@
 ---
-layout: page
 title: Siege
-description: "Various guides and tools about Rainbow Six: Siege, migrated from siege.dangeraspect.xyz"
+description: "Various guides and tools about Rainbow Six: Siege, migrated from the DangerAspect/Siege site"
 parent: none
+layout: list
+collection: siege
+reversed: true
+
+permalink: /siege
+redirect_from: /siege/sitemap
 ---
 
-<ul class="link-collection">
-{% for item in site.siege %}
-    <li class="link">
-        <a href="{{ item.url }}">
-        <div class="link-title">{{ item.title }}</div>
-            <div class="link-description">
-                {{ item.description }}
-                <br>
-                Last updated: {{ item.date | date_to_string}}
-            </div>
-        </a>
-    </li>
-{% endfor %}
-</ul>
+DangerAspect/Siege was a fan site with various guides and tools for Rainbow Six: Siege. All content from the site has been moved here, but may be broken and/or outdated.
+
+----

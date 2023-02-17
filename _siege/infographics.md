@@ -1,10 +1,12 @@
 ---
 layout: page
-title:  Infographics
+title: (Outdated) Infographics archive
 description: "A collection of Siege-related infographics."
 date: 2020-06-21
 tag: article
 ---
+
+{% include siege/outdated.html details="These infographics were accurate at time of release but are now out of date." %}
 
 Infographics I create will be listed here! 
 

@@ -1,14 +1,15 @@
 ---
 layout: page
-title:  Game Editions Comparison and Notes
+title: (Outdated) Year 4 Game Editions Comparison and Notes
 permalink: /siege/editions
 description: "A detailed comparison of the various editions available when purchasing Rainbow Six: Siege."
 image: /assets/img/siege/covers/standard.jpg
 date: 2019-05-15
 tag: article
+hidden: true
 ---
 
-{% include siege/outdated.html %}
+{% include siege/outdated.html details="Recent editions of the game are less confusing and a comparison is available at <a href='https://rainbow6.com/buy'>rainbow6.com/buy</a>." %}
 
 <style>
     table{
@@ -109,13 +110,13 @@ tag: article
     }
 </script>
 
-The following is a detailed comparison of the various editions available when purchasing Rainbow Six: Siege. This page has been updated for <a href="https://rainbow6.ubisoft.com/siege/en-us/news/152-344167-16/rainbow-six-siege-year-4-editions-launching-february-12">the changes made to game editions at the start of Year 4</a>, including the removal of Starter Edition.</p>
+The following is a detailed comparison of the various editions available when purchasing Rainbow Six: Siege. This page has been updated for <a href="https://rainbow6.ubisoft.com/siege/en-us/news/152-344167-16/rainbow-six-siege-year-4-editions-launching-february-12">the changes made to game editions at the start of Year 4</a>, including the removal of Starter Edition.
 
 Rainbow Six: Siege allows unlocking all gameplay content including maps and operators simply through in-game progression. All maps and weapon attachments are instantly unlocked for all players out of the box. 
 
 Additional information and context are provided after the table below. 
 
-<div class="overflow-container">
+<div class="wide">
     <table>
         <thead class="sticky-header">
             <tr>

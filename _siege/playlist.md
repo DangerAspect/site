@@ -1,17 +1,17 @@
 ---
 layout: page
-title:  Competitive Custom Game Playlist Settings
+title: Competitive Custom Game Playlist Settings
 permalink: /siege/playlist
 description: "A collection of playlist settings for custom competitive games for Rainbow Six Siege."
-date: 2019-01-02
+date: 2023-02-18
 tag: article
 ---
 
-{% include siege/outdated.html %}
-
-This page contains playlist settings and instructions for several popular/notable leagues in the Rainbow Six esports scene.
+This page contains playlist settings and instructions for several popular/notable leagues in the Rainbow Six esports scene. 
 
 Instructions for [setting up the playlist](#setting-up-the-playlist) are located at the end of this page. 
+
+Last updated 18 Feb 2023.
 
 {% include siege/disclaimer.html %}
 

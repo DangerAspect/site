@@ -1,15 +1,13 @@
 ---
 layout: page
-title:  Upgrading from Starter edition
+title: (Outdated) Upgrading from Starter edition
 permalink: /siege/starter
 description: "You can't upgrade from Starter Edition directly, so here are your options."
 date: 2019-02-13
 tag: article
 ---
 
-{% include siege/outdated.html %}
-
-<p class="important"><strong>OUTDATED</strong>: Ubisoft has announced <a href="https://rainbow6.ubisoft.com/siege/en-us/news/152-344167-16/rainbow-six-siege-year-4-editions-launching-february-12">updated game editions for Year 4, including the removal of Starter Edition.</a> </p>
+{% include siege/outdated.html details="Ubisoft has announced <a href='https://rainbow6.ubisoft.com/siege/en-us/news/152-344167-16/rainbow-six-siege-year-4-editions-launching-february-12'>updated game editions for Year 4, including the removal of Starter Edition.</a>" %}
 
 There isn't a direct upgrade path from Starter edition once you've purchased it.
 

@@ -1,11 +1,14 @@
 ---
 layout: page
-title:  Unlock Prices for Post-Launch Operators
+title: (Outdated) Unlock Prices for Post-Launch Operators
 permalink: /siege/operatorprices
-description: "An up-to-date graphic showing DLC operator unlock prices."
+description: "Graphics showing DLC operator unlock prices."
 date: 2020-12-16
 tag: article
+hidden: true
 ---
+
+{% include siege/outdated.html details="This inforgraphic has not been updated since Year 5 Season 4." %}
 
 This graphic shows the unlock prices for DLC operators, following the [Operator Lifecycle](#operator-lifecycle) which will be introduced starting Year 4 Season 1.
 
