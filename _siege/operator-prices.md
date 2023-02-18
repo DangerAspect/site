@@ -1,11 +1,13 @@
 ---
 layout: page
 title: (Outdated) Unlock Prices for Post-Launch Operators
-permalink: /siege/operatorprices
 description: "Graphics showing DLC operator unlock prices."
 date: 2020-12-16
 tag: article
 hidden: true
+
+permalink: /siege/operatorprices
+redirect_from: /siege/operatorprices/
 ---
 
 {% include siege/outdated.html details="This inforgraphic has not been updated since Year 5 Season 4." %}

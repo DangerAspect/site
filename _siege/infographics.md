@@ -4,6 +4,9 @@ title: (Outdated) Infographics archive
 description: "A collection of Siege-related infographics."
 date: 2020-06-21
 tag: article
+
+permalink: /siege/infographics
+redirect_from: /siege/infographics/
 ---
 
 {% include siege/outdated.html details="These infographics were accurate at time of release but are now out of date." %}
