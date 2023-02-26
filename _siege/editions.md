@@ -6,9 +6,6 @@ image: /assets/img/siege/covers/standard.jpg
 date: 2019-05-15
 tag: article
 hidden: true
-
-permalink: /siege/editions
-redirect_from: /siege/editions/
 ---
 
 {% include siege/outdated.html details="Recent editions of the game are less confusing and a comparison is available at <a href='https://rainbow6.com/buy'>rainbow6.com/buy</a>." %}

@@ -16,7 +16,7 @@ permalink: pretty
 collections:
   siege:
     output: true
-    permalink: /:collection/:name
+    permalink: /:collection/:name/
     sort_by: date
 
 defaults:

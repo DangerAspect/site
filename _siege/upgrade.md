@@ -5,7 +5,6 @@ description: "You can't upgrade from Starter Edition directly, so here are your 
 date: 2019-02-13
 tag: article
 
-permalink: /siege/starter
 redirect_from: /siege/starter/
 ---
 
