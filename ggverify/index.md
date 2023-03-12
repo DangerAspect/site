@@ -25,7 +25,7 @@ ggVerify is an email-based verification service for the GGPen Discord server, an
     {
         document.write("<div id='redirect-pane'></div>");
         const code = results[0];
-        const redirect = `mailto:ggverify@dangeraspect.xyz?subject=${encodeURIComponent("GGPen verification: ")}${code}&body=${encodeURIComponent("If you can read this, you should be good to click Send!\n\nFor details, see https://dangeraspect.xyz/ggverify/.\n-----")}`;
+        const redirect = `mailto:ggverify@dangeraspect.xyz?subject=${encodeURIComponent("GGPen verification: ")}${code}&body=${encodeURIComponent("Please check that you are sending this from your institutional email address!\n\nFor details, see https://dangeraspect.xyz/ggverify/.\n-----")}`;
         document.getElementById('redirect-pane').innerHTML = `<p><strong>Your email client should open automatically</strong> with the subject and recipient filled in. If not, <a href="${redirect}">click here to open in your default email client</a>.</p>`;
         window.onload = function(){window.location = redirect;}
     }
