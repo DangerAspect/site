@@ -7,6 +7,12 @@ img.icon{
     width: 0.8em;
 }
 
+.site-title img{
+    height: 2rem;
+    width: 2rem;
+    vertical-align: bottom;
+}
+
 .link-collection li
 {
     &.section{
@@ -37,4 +43,9 @@ img.icon{
 h1
 {
     font-weight: 500;
+}
+
+header .site-title
+{
+    font-size: 1rem;
 }
