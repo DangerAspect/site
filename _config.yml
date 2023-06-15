@@ -18,6 +18,9 @@ collections:
     output: true
     permalink: /:collection/:name/
     sort_by: date
+  posts:
+    permalink: /:collection/:title/
+    layout: post
 
 defaults:
   -
@@ -28,3 +31,12 @@ defaults:
       parent:
         link: "/siege"
         title: "Siege"
+  -
+    scope: 
+      path: ""
+      type: posts
+    values:
+      layout: post
+      parent:
+        link: "/posts"
+        title: "Posts"

@@ -1,3 +1,8 @@
+body
+{
+    color: #ccc;
+}
+
 img.icon{
     border-radius: 0;
     backdrop-filter: none;
@@ -40,12 +45,45 @@ img.icon{
     content: '← ';
 }
 
-h1
+h1, h2, h3
 {
     font-weight: 500;
+}
+
+h2
+{
+    font-size: 1.5rem;
+}
+
+ul, ol
+{
+    list-style-position: outside;
+}
+
+li::marker
+{
+    width: 1rem;
 }
 
 header .site-title
 {
     font-size: 1rem;
+}
+
+.home-content
+{
+    h1, h2, h3, h4, h5, h6, p
+    {
+        margin: 0 auto 0.5rem;
+    }
+
+    h2
+    {
+        font-size: 1.25rem;
+    }
+
+    .home-description
+    {
+        margin-bottom: 1rem;
+    }
 }
