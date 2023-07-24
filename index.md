@@ -41,9 +41,10 @@ background-image: /assets/img/background.jpg
 ## Elsewhere
 
 **Socials**: 
-[Twitter](https://twitter.com/DangerAspect) &bull; 
-[Instagram](https://instagram.com/DangerAspect) &bull; 
 [Mastodon](https://kopiti.am/@DangerAspect) &bull;
+[Instagram](https://instagram.com/DangerAspect) &bull;
+[Threads](https://www.threads.net/@dangeraspect) &bull; 
+[Twitter](https://twitter.com/DangerAspect) &bull; 
 <small>**@DangerAspect** on most places.</small>
 
 **I help run**: 

@@ -19,9 +19,13 @@ Software developer, computer science and game design student, admin on [N3FS](ht
 You can find me online on these platforms:
 
 * [Personal website <small>-- joeyfoo.com</small>](https://joeyfoo.com/)
-* Discord <small>-- @dangeraspect</small>
-* [Twitter <small>-- @DangerAspect</small>](https://twitter.com/DangerAspect)
+
 * [Mastodon <small>-- @DangerAspect@kopiti.am</small>](https://kopiti.am/@DangerAspect)
+* [Instagram <small>-- @DangerAspect</small>](https://instagram.com/DangerAspect)
+* [Threads <small>-- @dangeraspect@threads.net</small>](https://www.threads.net/@dangeraspect)
+* [Twitter <small>-- @DangerAspect</small>](https://twitter.com/DangerAspect)
+
+* Discord <small>-- @dangeraspect</small>
 * [GitHub <small>-- joeyfoo</small>](https://github.com/joeyfoo)
 * [Steam <small>-- DangerAspect</small>](https://steamcommunity.com/id/DangerAspect/)
 * Ubisoft Connect <small>-- DangerAspect</small>
