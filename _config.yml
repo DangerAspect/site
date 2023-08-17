@@ -7,6 +7,10 @@ url: "https://siege.dangeraspect.xyz/" # the base hostname & protocol for your s
 twitter_username: dangeraspect
 github_username:  dangeraspect
 
+include: [
+  ".well-known"
+]
+
 header_pages:
   - index.md
   - about.md
