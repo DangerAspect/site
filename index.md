@@ -44,8 +44,8 @@ background-image: /assets/img/background.jpg
 [Mastodon](https://kopiti.am/@DangerAspect) &bull; 
 [Instagram](https://instagram.com/DangerAspect) &bull; 
 [Threads](https://www.threads.net/@dangeraspect) &bull; 
-[Bluesky](https://bsky.app/profile/dangeraspect.xyz) &bull; 
 [Twitter](https://twitter.com/DangerAspect) &bull; 
+[Bluesky](https://bsky.app/profile/dangeraspect.xyz) &bull; 
 <small>**@DangerAspect** on most places.</small>
 
 **I help run**: 
