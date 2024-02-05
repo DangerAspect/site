@@ -22,7 +22,7 @@ You can find me online on these platforms:
 
 * [Mastodon <small>-- @DangerAspect@kopiti.am</small>](https://kopiti.am/@DangerAspect)
 * [Instagram <small>-- @DangerAspect</small>](https://instagram.com/DangerAspect)
-* [Threads <small>-- @dangeraspect@threads.net</small>](https://www.threads.net/@dangeraspect)
+<!-- * [Threads <small>-- @dangeraspect@threads.net</small>](https://www.threads.net/@dangeraspect) -->
 * [Bluesky <small>-- @dangeraspect.xyz</small>](https://bsky.app/profile/dangeraspect.xyz)
 * [Twitter <small>-- @DangerAspect</small>](https://twitter.com/DangerAspect)
 
